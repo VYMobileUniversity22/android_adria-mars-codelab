@@ -15,7 +15,7 @@ private val retrofit = Retrofit.Builder()                           //creamos ob
 
 interface MarsApiService {
     @GET("photos") //agrega el extremo photos al final del url, como si pusieramos /photos en el navegador
-    fun getPhotos() : String
+    suspend fun getPhotos() : String
 }
 
 //objeto publico para inicializar el servicio retrofit

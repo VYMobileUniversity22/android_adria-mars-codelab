@@ -45,9 +45,17 @@ class OverviewViewModel : ViewModel() {
      * [MarsPhoto] [List] [LiveData].
      */
     private fun getMarsPhotos() {
+
         viewModelScope.launch {
-            val listResult = MarsApi.retrofitService.getPhotos()
-            _status.value = listResult
+
+            try {
+                val listResult = MarsApi.retrofitService.getPhotos()
+                _status.value = listResult
+            } catch (e: Exception){
+                _status.value = "Failure: ${e.message}"
+            }
+
+
         }
     }
 }
